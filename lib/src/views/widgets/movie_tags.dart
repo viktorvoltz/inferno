@@ -14,7 +14,7 @@ class MovieTags extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: MovieType.values
       .map((type) => InkWell(
-        onTap: () => ref.read(movieTypeProvider.state)
+        onTap: () => ref.read(movieTypeProvider.notifier)
         .state = type,
         child: Chip(
           label: Text(
