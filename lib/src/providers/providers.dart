@@ -1,4 +1,4 @@
-import 'package:riverpod/riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
 
 import '../costants.dart';
@@ -14,9 +14,9 @@ final dioProvider = Provider<Dio>((ref) {
 final movieTypeProvider = StateProvider<MovieType>((ref) => MovieType.popular);
 
 final moviesProvider = FutureProvider<List<Movie>>((ref) async {
-  final movieType = ref.watch(movieTypeProvider.state);
+  final movieType = ref.watch(movieTypeProvider.state).state;
   final dio = ref.watch(dioProvider);
-  final response = await dio.get('movie/{movieType.value}',
+  final response = await dio.get('movie/${movieType.value}',
       queryParameters: {'api_key': EnvConstants.API_KEY});
   return MovieResponse.fromJson(response.data).results!;
 });
