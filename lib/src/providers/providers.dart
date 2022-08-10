@@ -20,3 +20,5 @@ final moviesProvider = FutureProvider<List<Movie>>((ref) async {
       queryParameters: {'api_key': EnvConstants.API_KEY});
   return MovieResponse.fromJson(response.data).results!;
 });
+
+final movieProvider = Provider<Movie>((_) => throw UnimplementedError());
