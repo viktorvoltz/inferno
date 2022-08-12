@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../costants.dart';
 import '../../providers/providers.dart';
 import '../movie_details_page.dart';
+import '../../adaptive_screen.dart';
 
 class MovieList extends ConsumerWidget {
   const MovieList({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class MovieList extends ConsumerWidget {
     return moviesAsyncValue.maybeWhen(
       orElse: () => const Center(child: CircularProgressIndicator()),
       data: (movies) => Container(
-        height: 200,
+        height: 0.85.defaultHeight(),
         child: GridView.builder(
           itemCount: movies.length,
           itemBuilder: (BuildContext context, int index) {
