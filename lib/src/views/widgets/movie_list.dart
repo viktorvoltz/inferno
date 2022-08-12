@@ -13,7 +13,8 @@ class MovieList extends ConsumerWidget {
     final moviesAsyncValue = ref.watch(moviesProvider);
     return moviesAsyncValue.maybeWhen(
       orElse: () => const Center(child: CircularProgressIndicator()),
-      data: (movies) => Center(
+      data: (movies) => Container(
+        height: 200,
         child: GridView.builder(
           itemCount: movies.length,
           itemBuilder: (BuildContext context, int index) {
