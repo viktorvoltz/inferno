@@ -11,7 +11,10 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: const [
-          MovieTags(),
+          Padding(
+            padding: EdgeInsets.only(top: 18.0),
+            child: MovieTags(),
+          ),
           SizedBox(height: 3,),
           MovieList(),
         ],
