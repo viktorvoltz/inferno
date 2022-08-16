@@ -4,8 +4,30 @@ import 'package:inferno/src/providers/providers.dart';
 
 import '../costants.dart';
 
-class MovieDetailsPage extends StatelessWidget {
+class MovieDetailsPage extends StatefulWidget {
   const MovieDetailsPage({Key? key}) : super(key: key);
+
+  @override
+  State<MovieDetailsPage> createState() => _MovieDetailsPageState();
+}
+
+class _MovieDetailsPageState extends State<MovieDetailsPage>
+    with TickerProviderStateMixin {
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    animationController =
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    animationController.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +98,13 @@ class MovieDetailsPage extends StatelessWidget {
                   thickness: 1.5,
                 ),
                 const SizedBox(height: 10),
-                Text("${movie.overview}")
+                SlideTransition(
+                  position: Tween<Offset>(
+                    begin: Offset(0, 1),
+                    end: Offset.zero
+                  ).animate(animationController),
+                  child: Text("${movie.overview}"),
+                )
               ],
             ),
           ),
