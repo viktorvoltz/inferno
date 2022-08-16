@@ -24,8 +24,9 @@ class MovieList extends ConsumerWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => ProviderScope(
+                  PageRouteBuilder(
+                    transitionDuration: const Duration(seconds: 1),
+                    pageBuilder: (context, _, __) => ProviderScope(
                       overrides: [movieProvider.overrideWithValue(movie)],
                       child: const MovieDetailsPage(),
                     ),
