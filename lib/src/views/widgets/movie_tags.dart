@@ -10,20 +10,23 @@ class MovieTags extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final MovieType movieType = ref.watch(movieTypeProvider);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: MovieType.values
-      .map((type) => InkWell(
-        onTap: () => ref.read(movieTypeProvider.notifier)
-        .state = type,
-        child: Chip(
-          label: Text(
-            type.name,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: MovieType.values
+        .map((type) => InkWell(
+          onTap: () => ref.read(movieTypeProvider.notifier)
+          .state = type,
+          child: Chip(
+            label: Text(
+              type.name,
+            ),
+            backgroundColor: type == movieType ? Colors.blue : null,
           ),
-          backgroundColor: type == movieType ? Colors.blue : null,
-        ),
-      ))
-      .toList(),
+        ))
+        .toList(),
+      ),
     );
   }
 }
