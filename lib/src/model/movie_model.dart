@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'movie_model.freezed.dart';
+
 @Freezed()
 class MovieModel with _$MovieModel {
   const factory MovieModel({
@@ -18,4 +20,6 @@ class MovieModel with _$MovieModel {
   final num? voteAverage,
   final num? voteCount,
   }) = _MovieModel;
+
+  factory MovieModel.fromJson(Map<String, dynamic> json) => _$MovieModelFromJson(json);
 }
