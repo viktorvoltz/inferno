@@ -1,3 +1,5 @@
+import 'package:inferno/src/model/movie_model.dart';
+
 class Movie {
   final bool? adult;
   final String? backdropPath;
@@ -52,7 +54,7 @@ class Movie {
 
 class MovieResponse {
   int? page;
-  List<Movie>? results;
+  List<MovieModel>? results;
   int? totalPages;
   int? totalResults;
 
@@ -67,9 +69,9 @@ class MovieResponse {
       try {
         page = json['page'];
         if (json['results'] != null) {
-          results = <Movie>[];
+          results = <MovieModel>[];
         json['results'].forEach((v) {
-          results?.add(new Movie.fromJson(v));
+          results?.add(new MovieModel.fromJson(v));
         });
       }
       totalPages = json['total_pages'];
