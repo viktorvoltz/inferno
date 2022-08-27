@@ -7,7 +7,7 @@ void main() {
 
     await tester.pumpWidget(const MovieList());
 
-    expect(find.byType(Card), findsOneWidget);
+    expect(find.byType(Card), findsWidgets);
 
   });
 }
