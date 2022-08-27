@@ -6,3 +6,5 @@ class EnvConstants {
   static const API_KEY = String.fromEnvironment('API_KEY',
       defaultValue: "5a93c12dd088fc8373eae17bfadb958c");
 }
+
+// https://api.themoviedb.org/3/movie/popular?api_key=5a93c12dd088fc8373eae17bfadb958c
