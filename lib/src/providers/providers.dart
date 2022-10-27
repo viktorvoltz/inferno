@@ -14,7 +14,7 @@ final dioProvider = Provider<Dio>((ref) {
 
 final movieTypeProvider = StateProvider<MovieType>((ref) => MovieType.popular);
 
-final moviesProvider = FutureProvider<List<MovieModel>>((ref) async {
+final moviesProvider = FutureProvider<List<Movie>>((ref) async {
   final movieType = ref.watch(movieTypeProvider.state).state;
   final dio = ref.watch(dioProvider);
   final response = await dio.get('movie/${movieType.value}',
@@ -22,4 +22,4 @@ final moviesProvider = FutureProvider<List<MovieModel>>((ref) async {
   return MovieResponse.fromJson(response.data).results!;
 });
 
-final movieProvider = Provider<MovieModel>((_) => throw UnimplementedError());
+final movieProvider = Provider<Movie>((_) => throw UnimplementedError());
