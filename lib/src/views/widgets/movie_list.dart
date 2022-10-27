@@ -20,6 +20,7 @@ class MovieList extends ConsumerWidget {
           itemCount: movies.length,
           itemBuilder: (BuildContext context, int index) {
             final movie = movies[index];
+            print(movie.posterPath);
             return InkWell(
               onTap: () {
                 Navigator.push(
