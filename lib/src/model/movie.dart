@@ -54,7 +54,7 @@ class Movie {
 
 class MovieResponse {
   int? page;
-  List<MovieModel>? results;
+  List<Movie>? results;
   int? totalPages;
   int? totalResults;
 
@@ -69,9 +69,9 @@ class MovieResponse {
       try {
         page = json['page'];
         if (json['results'] != null) {
-          results = <MovieModel>[];
+          results = <Movie>[];
         json['results'].forEach((v) {
-          results?.add(new MovieModel.fromJson(v));
+          results?.add(new Movie.fromJson(v));
         });
       }
       totalPages = json['total_pages'];
